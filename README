@@ -1,0 +1,43 @@
+Integrated login script for obtaining ACCESS TOKENS from Twitter, Facebook, LinkedIn and Google.
+
+First you have to register an APP at the service(s) you require (Twitter, Facebook, LinkedIn and Google).
+Using the information you have after registering your APP you fill in the details in the Application.cfc.
+
+
+Next we have have some buttons so you can choose the login method  :-
+
+This send you to the processLogin.cfm page where the initiate_login method is called, in the login.cfc, with the correct parameters :-
+The initiate_login method makes a CFHTTP request to the server in question and you login as normal.
+The server then processes your login and send control back to the processLogin.cfm.
+At this point we have an AUTHORISATION CODE.
+
+
+Now Based on how you login the processLogin.cfm now calls the authorise_login method.
+
+
+Now the authorise_login method sends a CFHTTP request to the server and asks for an ACCESS TOKEN.
+The server sends back a response which contains the ACCESS TOKEN that is stored as an application variable that you can now
+use to initiate API calls to the service you logged into.
+
+
+
+
+The Facebook, Google and LinkedIn code is coursety of Raymond Camden ( @cfjedimaster ) :-
+
+Facebook - http://www.raymondcamden.com/index.cfm/2013/4/1/ColdFusion-and-OAuth-Part-1--Facebook
+LinkedIn - http://www.raymondcamden.com/index.cfm/2013/4/3/ColdFusion-and-OAuth-Part-2--Facebook
+Google - http://www.raymondcamden.com/index.cfm/2013/4/17/ColdFusion-and-OAuth-Part-3--Google
+
+
+The Twitter code is a combination of code taken from Dave Delbridge (for the User Authorisation) and Twitter4J ( for the API Calls ) :-
+
+	The Authoristaion portion is from http://www.delbridge.org/post.cfm/tackling-twitter-s-oauth-with-coldfusion
+	(I took the separate pages and made them into a cfc)
+
+	The Twitter API code uses http://twitter4j.org/en/index.html for the API Calls as GET does not work in Dave Delbridge's code
+	
+	To get the twitter4j to load I just put
+	twitter4j-core-3.0.3.jar into C:\ColdFusion10\cfusion\wwwroot\WEB-INF\lib
+
+
+	
