@@ -6,9 +6,9 @@ Using the information you have after registering your APP you fill in the detail
 
 Next we have have some buttons so you can choose the login method  :-
 
-This send you to the processLogin.cfm page where the initiate_login method is called, in the login.cfc, with the correct parameters :-
+This sends you to the processLogin.cfm page where the initiate_login method is called, in the login.cfc, with the correct parameters :-
 The initiate_login method makes a CFHTTP request to the server in question and you login as normal.
-The server then processes your login and send control back to the processLogin.cfm.
+The server then processes your login and sends control back to the processLogin.cfm.
 At this point we have an AUTHORISATION CODE.
 
 
